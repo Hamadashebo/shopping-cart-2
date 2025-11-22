@@ -1,0 +1,598 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: linear-gradient(135deg, #ece9e6, #ffffff);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.login {
+  width: 100%;
+  max-width: 400px;
+  padding: 40px 30px;
+  background: #fff;
+  border-radius: 35px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.login:hover {
+  transform: translateY(-5px);
+}
+
+.login h1 {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  color: #222;
+  margin-bottom: 25px;
+}
+
+.login input {
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 18px;
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+}
+
+.login input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+}
+
+.registeraccount {
+  font-size: 16px;
+  color: #555;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.registeraccount a {
+  color: #4caf50;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.registeraccount a:hover {
+  color: #388e3c;
+  text-decoration: underline;
+}
+
+.submit {
+  width: 100%;
+  padding: 15px;
+  font-size: 20px;
+  border: none;
+  border-radius: 25px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  box-shadow: 0 6px 15px rgba(76, 175, 80, 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submit:hover {
+  background-color: #388e3c;
+  box-shadow: 0 8px 20px rgba(56, 142, 60, 0.6);
+}
+
+/* الخطأ */
+#error {
+  color: #b00020;
+  background-color: #ffe6e6;
+  padding: 15px 20px;
+  border-radius: 15px;
+  margin: 10px auto 20px auto;
+  width: 100%;
+  max-width: 400px;
+  font-size: 16px;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(176, 0, 32, 0.3);
+  display: none;
+}
+
+#error h4 {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  border-left: 6px solid #b00020;
+  padding-left: 10px;
+  color: #b00020;
+}t الأساسي */
+.layout {
+  display: flex;
+  flex-direction: row;
+  transition: all 1s ease-in-out;
+  height: 100vh; /* مهم جداً */
+  overflow: hidden; /* يمنع ظهور scroll غير مرغوب فيه */
+}
+
+
+/* المنطقة الرئيسية للمحتوى */
+.main-content {
+  flex: 1;
+  transition: all 1s ease-in-out;
+}
+
+/* سلة الشراء الجانبية */
+.carttab {
+  width:450px;;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.889);
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+  display: block;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+.carttab.open {
+  transform: translateX(0);
+}
+
+
+/* الهيدر */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 23px;
+  position: relative;
+  z-index: 10; /* مهم علشان يفضل ظاهر فوق */
+  background-color: white;
+}
+
+/* يمين الهيدر */
+.header .right-side {
+  margin-right: 20px;
+  position: relative;
+}
+
+/* زر الكارت */
+.header .right-side .cart {
+  border: none;
+  background-color: white;
+  margin-right: 30px;
+  cursor: pointer;
+  padding: 10px;
+  outline: none;
+}
+.header .right-side .cart i {
+  font-size: 30px;
+}
+
+/* عدد العناصر */
+.header .right-side .numsofcartitem {
+  position: absolute;
+  background-color: red;
+  border-radius: 50%;
+  color: white;
+  right: 120px;
+  top: 33px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 19px;
+}
+
+/* زر تسجيل الخروج */
+.header .right-side .logout {
+  width: 100px;
+  height: 40px;
+  background-color: black;
+  color: white;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0px 0px 3px black;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+.header .right-side .logout:hover {
+  background-color: green;
+  cursor: pointer;
+}
+
+/* المنتجات */
+.productlist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* مسافة بين المنتجات */
+  justify-content: center; /* حطهم في نص الصفحة */
+  padding: 20px;
+  z-index: -1;
+}
+.productlist .items {
+  width: 260px;
+  padding: 25px 20px;
+  text-align: center;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #3a3a3a, #2e2e2e);
+  margin: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.productlist .items:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7);
+}
+
+.items img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  filter: drop-shadow(0px 6px 10px rgba(0, 0, 0, 0.6));
+  margin-bottom: 15px;
+}
+
+.items h2 {
+  font-size: 16px;
+  color: #ffffffdd;
+  margin-bottom: 10px;
+  height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.items .price {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #4caf50;
+}
+
+.items button {
+  background-color: #4caf50;
+  color: white;
+  width: 140px;
+  height: 36px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.items button:hover {
+  background-color: #45a049;
+}
+
+
+/* عناصر السلة */
+.cartlist h1 {
+  color: white;
+  text-align: center;
+}
+.btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  background-color: rgba(0, 0, 0, 0.889);
+  padding: 15px;
+}
+.btn button {
+  width: 141px;
+  height: 33px;
+  padding: 8px;
+  font-size: 19px;
+  text-align: center;
+  
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+.btn .checkout {
+  background-color: gold;
+}
+.cartitems {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  width: 100%; /* خلي العنصر ياخد العرض الكامل داخل السلة */
+  flex-wrap: wrap; /* يساعد العناصر لو الشاشة صغيرة */
+}
+
+.cart-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+
+.cartitems .img img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.cartitems .name {
+  flex: 1;
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.cartitems .totalprice {
+  width: 80px;
+  text-align: center;
+}
+
+.cartitems .quntity {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cartitems .quntity span {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-color: #555;
+  color: white;
+  text-align: center;
+  line-height: 25px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/* شاشات متوسطة وأصغر */
+@media (max-width: 768px) {
+  .header {
+    padding: 15px 10px;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .header .right-side {
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .header .right-side .cart i {
+    font-size: 26px;
+  }
+
+  .header .right-side .logout {
+    width: 90px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .header .right-side .numsofcartitem {
+    font-size: 14px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    margin-left: -12px;
+    margin-top: -8px;
+  }
+}
+
+/* شاشات صغيرة جداً */
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 5px;
+  }
+
+  .header .right-side {
+    width: auto;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .header .right-side .cart i {
+    font-size: 22px;
+  }
+
+  .header .right-side .logout {
+    width: 80px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .header .right-side .numsofcartitem {
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    margin-left: -10px;
+    margin-top: -6px;
+  }
+}
+
+
+/* شاشات كبيرة (أجهزة سطح المكتب الكبيرة) */
+@media (min-width: 1200px) {
+  .login {
+    width: 30%;
+  }
+  .productlist .items {
+    width: 260px;
+    margin: 30px;
+  }
+  #error {
+    width: 30%;
+  }
+}
+
+/* شاشات متوسطة (لابتوبات وأجهزة تابلت كبيرة) */
+@media (max-width: 1199px) and (min-width: 992px) {
+  .login {
+    width: 40%;
+  }
+  .productlist .items {
+    width: 220px;
+    margin: 20px;
+  }
+  #error {
+    width: 40%;
+  }
+}
+
+/* الشاشات الكبيرة والمتوسطة (صورة الوضع الطبيعي للـ cart على اليمين) */
+@media (min-width: 769px) {
+  .carttab {
+    width: 450px; /* حجم ثابت مناسب */
+    height: 100vh; /* طول كامل الشاشة */
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-y: auto;
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: block;
+  }
+}
+
+/* الشاشات الصغيرة (عرض كامل اليمين ويبقى Sidebar عمودي) */
+@media (max-width: 768px) {
+  .carttab {
+    width: 100vw; /* تاخد العرض كله */
+    height: 100vh; /* طول كامل الشاشة */
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.95);
+    overflow-y: auto;
+    box-shadow: none; /* ممكن تشيل الظل علشان يناسب العرض الكامل */
+    z-index: 1000;
+    display: block;
+  }
+}
+
+
+/* شاشات صغيرة (تابلت) */
+@media (max-width: 991px) and (min-width: 768px) {
+  .login {
+    width: 50%;
+    margin: 100px auto;
+  }
+  .productlist {
+    gap: 15px;
+    padding: 15px;
+  }
+  .productlist .items {
+    width: 180px;
+    margin: 15px 10px;
+    padding: 20px 15px;
+  }
+  #error {
+    width: 50%;
+  }
+}
+
+/* شاشات أصغر (موبايل كبير) */
+@media (max-width: 767px) and (min-width: 480px) {
+  .login {
+    width: 70%;
+    margin: 80px auto;
+    padding: 20px 15px;
+  }
+  .productlist .items {
+    width: 140px;
+    margin: 12px 8px;
+    padding: 15px 10px;
+  }
+  .items img {
+    height: 140px;
+  }
+  .items h2 {
+    font-size: 14px;
+    height: auto;
+  }
+  .items .price {
+    font-size: 18px;
+  }
+  .items button {
+    width: 120px;
+    height: 32px;
+    font-size: 14px;
+  }
+  #error {
+    width: 70%;
+    font-size: 14px;
+  }
+}
+
+/* شاشات صغيرة جداً (موبايلات صغيرة) */
+@media (max-width: 479px) {
+  .login {
+    width: 90%;
+    margin: 60px auto;
+    padding: 15px 10px;
+  }
+  .productlist {
+    gap: 10px;
+    padding: 10px;
+  }
+  .productlist .items {
+    width: 120px;
+    margin: 10px 6px;
+    padding: 10px 8px;
+  }
+  .items img {
+    height: 120px;
+  }
+  .items h2 {
+    font-size: 12px;
+    height: auto;
+  }
+  .items .price {
+    font-size: 16px;
+  }
+  .items button {
+    width: 100px;
+    height: 28px;
+    font-size: 12px;
+  }
+  #error {
+    width: 90%;
+    font-size: 12px;
+  }
+}

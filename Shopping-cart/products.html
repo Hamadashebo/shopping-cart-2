@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="layout">
+    
+    <!-- Main Content (Header + Products) -->
+    <div class="main-content">
+      <div class="container">
+        <!-- Header -->
+        <header class="header">
+          <h2>Product List</h2>
+          <div class="right-side">
+            <button class="cart">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </button>
+            <span class="numsofcartitem">0</span>
+            <button class="logout">Log out</button>  
+          </div>
+        </header>
+
+        <!-- Product List -->
+        <div class="productlist">
+         
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="carttab">
+      <div class="cartlist">
+        <h1>Shopping Cart</h1>
+        <div class="cartitems">
+          
+        </div>
+      </div>
+      <div class="btn">
+        <button class="close">Close</button>
+        <button class="checkout">Check Out</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="main.js"></script>
+  <script src="products.js"></script>
+</body>
+</html>
